@@ -25,6 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ssr": "npm run build && node server/index.js",
+    "heroku-postbuild": "npm run ssr",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\""
   },
   "eslintConfig": {
