@@ -1,7 +1,7 @@
 import express from "express";
 import serverRenderer from "./serverRenderer";
 
-const PORT = 3001;
+const PORT = process.env.PORT || 9000;
 const path = require("path");
 
 const app = express();
