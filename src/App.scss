@@ -17,6 +17,12 @@ body {
   }
 }
 
+.chart-container {
+  border-top: 4px solid;
+  border-bottom: 4px solid;
+  box-sizing: content-box;
+}
+
 @media (max-width: 576px) {
   .announcement {
     border-top: 1px solid #cccccc;
