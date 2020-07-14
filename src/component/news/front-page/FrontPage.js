@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from '../../common/spinner/Spinner';
+import LineChart from '../linechart/LineChart';
+
 import * as NewsService from '../NewsService';
 
 const FrontPage = (props) => {
@@ -11,6 +13,7 @@ const FrontPage = (props) => {
   const [hiddenList, setHiddenList] = useState(hiddenListFromStorage);
   const [voteDetails, setVoteDetails] = useState(votingListFromStorage);
   const [page, setPage] = useState(1);
+  const [mapWidth, setMapWidth] = useState(250);
 
   useEffect(() => {
     if (props.location.pathname === '/') {
@@ -21,6 +24,12 @@ const FrontPage = (props) => {
       setPage(currentPage);
       getFrontPageDetails(currentPage - 1);
     }
+    let ele = document.getElementsByClassName('App')[0];
+    setMapWidth(ele.clientWidth);
+    window.addEventListener('resize', () => {
+      let ele = document.getElementsByClassName('App')[0];
+      setMapWidth(ele.clientWidth);
+    });
   }, []);
 
   const loadMessage = (page) => {
@@ -61,7 +70,8 @@ const FrontPage = (props) => {
       if (!voteDetailsState.hasOwnProperty(news.objectID)) {
         voteDetailsState[news.objectID] = {
           objectID: news.objectID,
-          points: news.points
+          points: news.points,
+          created_at: news.created_at
         };
       } else {
       }
@@ -236,6 +246,12 @@ const FrontPage = (props) => {
             </span>
           </li>
         </ul>
+        <LineChart
+          newsList={newsList}
+          voteDetails={voteDetails}
+          hiddenList={hiddenList}
+          width={mapWidth}
+        />
       </section>
     </>
   );
