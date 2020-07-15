@@ -29,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ssr": "npm run build && node server/index.js",
-    "heroku-postbuild": "npm cache clean --force && node server/index.js",
+    "heroku-postbuild": "rm -rf ./build && rm -rf ./node_modules && npm install && npm run ssr",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\""
   },
   "browserslist": {
