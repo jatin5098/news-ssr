@@ -31,7 +31,7 @@ const LinerChart = (props) => {
   });
 
   return (
-    <section id="chartContainer" className="chart-container w-100 py-3">
+    <section id="chartContainer" className="chart-container w-100 py-3 mb-5">
       <LineChart
         width={width}
         height={300}
