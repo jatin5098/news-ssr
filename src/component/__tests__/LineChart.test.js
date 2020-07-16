@@ -5,7 +5,7 @@ import { cleanup, render, act } from '@testing-library/react';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import LineChart from './news/linechart/LineChart';
+import LineChart from '../news/linechart/LineChart';
 
 describe('<LineChart />', () => {
   const response = {

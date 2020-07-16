@@ -21,7 +21,7 @@ const LinerChart = (props) => {
     return dateNew - dateOld;
   });
   const data = sortData.filter((data) => {
-    if (hiddenList[data.objectID]) {
+    if (hiddenList && hiddenList[data.objectID]) {
       return (
         hiddenList[data.objectID].isVisible &&
         newsList.find((list) => list.objectID === data.objectID)
