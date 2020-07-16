@@ -21,10 +21,10 @@ const FrontPage = (props) => {
       getFrontPageDetails(currentPage - 1);
     }
     let ele = document.getElementsByClassName('App')[0];
-    setMapWidth(ele.clientWidth);
+    setMapWidth(ele.clientWidth + 35);
     window.addEventListener('resize', () => {
       let ele = document.getElementsByClassName('App')[0];
-      setMapWidth(ele.clientWidth);
+      setMapWidth(ele.clientWidth + 35);
     });
   }, []);
 
