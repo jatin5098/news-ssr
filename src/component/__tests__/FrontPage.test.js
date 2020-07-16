@@ -4,8 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import { cleanup, render, act } from '@testing-library/react';
 
 Enzyme.configure({ adapter: new Adapter() });
-import FrontPage from '../component/news/front-page/FrontPage';
-import * as NewsService from '../component/news/NewsService';
+import FrontPage from '../news/front-page/FrontPage';
+import * as NewsService from '../news/NewsService';
 
 describe('<FrontPage />', () => {
   afterEach(() => {

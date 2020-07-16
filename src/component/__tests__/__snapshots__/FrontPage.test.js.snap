@@ -112,6 +112,8 @@ exports[`<FrontPage /> Should fetch "FrontPageDetails" on load 1`] = `
         </span>
       </li>
     </ul>
+  </section>
+  <section>
     <section
       class="chart-container w-100 py-3"
       id="chartContainer"
