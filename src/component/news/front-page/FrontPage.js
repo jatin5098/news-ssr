@@ -5,13 +5,9 @@ import LineChart from '../linechart/LineChart';
 import * as NewsService from '../NewsService';
 
 const FrontPage = (props) => {
-  const hiddenListFromStorage = JSON.parse(localStorage.getItem('hiddenList')) || {};
-  const votingListFromStorage =
-    JSON.parse(localStorage.getItem('voteDetails')) || {};
-
   const [newsList, setNewsList] = useState([]);
-  const [hiddenList, setHiddenList] = useState(hiddenListFromStorage);
-  const [voteDetails, setVoteDetails] = useState(votingListFromStorage);
+  const [hiddenList, setHiddenList] = useState({});
+  const [voteDetails, setVoteDetails] = useState({});
   const [page, setPage] = useState(1);
   const [mapWidth, setMapWidth] = useState(250);
 
@@ -63,8 +59,10 @@ const FrontPage = (props) => {
   };
 
   const filterVoting = (newsList) => {
+    const votingListFromStorage = JSON.parse(localStorage.getItem('voteDetails'));
+    setVoteDetails(votingListFromStorage);
     const list = [...newsList];
-    const voteDetailsState = { ...voteDetails };
+    const voteDetailsState = { ...votingListFromStorage };
 
     list.forEach((news) => {
       if (!voteDetailsState.hasOwnProperty(news.objectID)) {
@@ -81,8 +79,10 @@ const FrontPage = (props) => {
   };
 
   const filterHiddenList = (newsList) => {
+    const hiddenListFromStorage = JSON.parse(localStorage.getItem('hiddenList'));
+    setHiddenList(hiddenListFromStorage);
     const allNews = [...newsList];
-    const hiddenListState = { ...hiddenList };
+    const hiddenListState = { ...hiddenListFromStorage };
 
     allNews.forEach((news) => {
       if (!hiddenListState.hasOwnProperty(news.objectID)) {
@@ -163,6 +163,7 @@ const FrontPage = (props) => {
         {newsList.length > 0 &&
           newsList.map((news) => {
             return (
+              hiddenList &&
               hiddenList[news.objectID] &&
               hiddenList[news.objectID].isVisible && (
                 <div key={news.objectID} className="row p-2">
@@ -246,6 +247,8 @@ const FrontPage = (props) => {
             </span>
           </li>
         </ul>
+      </section>
+      <section>
         <LineChart
           newsList={newsList}
           voteDetails={voteDetails}
