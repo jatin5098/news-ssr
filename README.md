@@ -1,5 +1,7 @@
 ## NEWS - Front Page [SSR]
 
+###### Live status [Access the App by following this link](https://news-ssr-3w59gs96s.vercel.app)
+
 ### Tech Stack
 
 1. Create React App
@@ -14,7 +16,7 @@
 
 ### Features Covered
 
-1. Appis fully responsive for all media
+1. App is fully responsive for all media
 2. App maintenining the user selection of upvote and hide of news
 3. Graph showing the live status
 4. App URL can be bookmarked and directly access from address bar
